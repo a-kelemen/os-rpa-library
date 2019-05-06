@@ -4,10 +4,7 @@ from __future__ import absolute_import, division, generators, print_function, un
 from ..base import Base
 from ..exception import *
 import shutil
-
-from openpyxl import load_workbook
 import os
-import sys
 
 
 class FileHandlerKeywords(Base):
@@ -57,6 +54,5 @@ class FileHandlerKeywords(Base):
 		else:
 			try:
 				os.remove(file_source)
-			except Exception as e:
-				#print(e)
+			except Exception:
 				raise AssertionError(str("Deleting file ") + os.path.normpath(file_source) + str(" failed!"))

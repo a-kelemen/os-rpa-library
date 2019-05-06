@@ -3,7 +3,6 @@
 from __future__ import absolute_import, division, generators, print_function, unicode_literals
 import os
 from ..base import Base
-from robot.libraries.BuiltIn import BuiltIn, RobotNotRunningError
 from ..exception import *
 import math
 
@@ -11,17 +10,10 @@ import math
 class DataKeywords(Base):
 
 	def file_should_exist(self, file_name):
-
 		file_source = self._get_source(file_name)
-		#print("file_name:")
-		#print(file_name)
-		#print("file_source: ")
-		#print(file_source)
 		exist = os.path.isfile(os.path.normpath(file_source))
-		#print("file exist: " + str(exist))
 		if not exist:
 			raise FileNotFoundException(str("File does not exist: ") + os.path.normpath(file_source))
-			#raise AssertionError("File does not exist: ")
 
 	def file_should_not_exist(self, file_name):
 		file_source = self._get_source(file_name)
@@ -31,8 +23,6 @@ class DataKeywords(Base):
 
 	def folder_should_exist(self, folder_name):
 		folder_source = self._get_source(folder_name)
-		#print("folder_source: ")
-		#print(folder_source)
 		exist = os.path.isdir(os.path.normpath(folder_source))
 		if not exist:
 			raise DirectoryNotFoundException(str("Folder does not exist: ") + os.path.normpath(folder_source))
@@ -63,7 +53,6 @@ class DataKeywords(Base):
 			return int(size_kb)
 		else:
 			raise FileNotFoundException(str("File does not exist: ") + os.path.normpath(file_source))
-			#raise AssertionError("File does not exist: ")
 
 	def list_folders(self, folder_name="default_"):
 		folder_source = self._get_source(folder_name)
@@ -74,4 +63,3 @@ class DataKeywords(Base):
 			return folders
 		else:
 			raise DirectoryNotFoundException(str("Folder does not exist: ") + os.path.normpath(folder_source))
-			#raise DirectoryNotFoundException("Folder does not exist: " )
