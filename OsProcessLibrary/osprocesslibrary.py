@@ -3,7 +3,6 @@
 
 from __future__ import absolute_import, division, generators, print_function, unicode_literals
 
-from robot.api import logger
 from .osmodule.keywords.definition.data import DataKeywords
 from .osmodule.keywords.definition.filehandler import FileHandlerKeywords
 
